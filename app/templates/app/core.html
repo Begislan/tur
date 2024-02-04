@@ -1,0 +1,135 @@
+{% extends 'app/base.html' %} {% block title %} Башкы бет {% endblock %}
+{% block content %}
+
+
+    {% include "app/include/header.html" %}
+
+    <br>
+
+    <div class="p-4 p-md-5 mb-4  rounded img-1 text-bg-dark">
+        <div class="col-lg-6 px-0">
+            <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
+            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
+                efficiently
+                about what’s most interesting in this post’s contents. Lorem ipsum, dolor sit amet consectetur
+                adipisicing
+                elit. Aperiam, quis reprehenderit! Sequi perferendis nemo sed id alias quaerat autem, distinctio
+                officiis
+                assumenda praesentium, adipisci, quae maiores consequatur eos. Expedita, laborum. Lorem ipsum dolor, sit
+                amet consectetur adipisicing elit. Quis fugit, fugiat autem magni facere sed atque perspiciatis?
+                Praesentium, magni? Enim ab pariatur nemo commodi dicta excepturi voluptate quos eligendi dolorum!Lorem
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea consequuntur reiciendis provident pariatur
+                minus natus voluptatum sint, qui corporis amet odit quasi. Ducimus, ab totam officia error voluptate
+                quod
+                dicta.
+                Dolorem aliquam similique perferendis nisi delectus architecto accusamus at quis hic inventore
+                blanditiis,
+                molestias quod consequatur quibusdam quos, veritatis temporibus voluptates quas? Quidem architecto,
+                fugit
+                maiores asperiores ex perspiciatis a?</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container">
+        <div class="card border-primary mb-3" style="max-width: 100%;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+                <h4 class="card-title">Primary card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+    <div style="max-width: 100%;" class="d-md-flex flex-md-equal my-md-3 ps-md-3">
+
+        {% for best in best %}
+            <div class="text-bg-dark me-md-2 pt-3 px-3 pt-md-4 px-md-5 text-center overflow-hidden">
+                <div class="my-3 py-3">
+                    <a class="text-decoration-none" href="{% url 'detail' best.id %}"
+                       class="icon-link gap-1 icon-link-hover stretched-link">
+                        <h2 class="display-7">{{ best.name|truncatechars:20}}</h2></a>
+
+                </div>
+                <div class="bg-body-tertiary shadow-sm mx-auto"
+                     style="width: 80%; height: 300px; border-radius: 23px 23px 0 0;">
+                    <img style="width: 100%; height: 300px; border-radius: 21px 21px 0 0; object-fit: cover" src="{{ best.img.url }}" alt="">
+                </div>
+
+            </div>
+        {% endfor %}
+
+        {#        <div class="text-bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">#}
+        {#            <div class="my-3 py-3">#}
+        {#                <h2 class="display-5">Another headline</h2>#}
+        {#                <p class="lead">And an even wittier subheading.</p>#}
+        {#            </div>#}
+        {#            <div class="bg-body-tertiary shadow-sm mx-auto"#}
+        {#                 style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>#}
+        {#        </div>#}
+        {##}
+        {#        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">#}
+        {#            <div class="my-3 py-3">#}
+        {#                <h2 class="display-5">Another headline</h2>#}
+        {#                <p class="lead">And an even wittier subheading.</p>#}
+        {#            </div>#}
+        {#            <div class="bg-body-tertiary shadow-sm mx-auto"#}
+        {#                 style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>#}
+        {#        </div>#}
+
+    </div>
+
+    <br>
+
+    <div class="container">
+        <div class="card border-primary mb-3" style="max-width: 100%;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+                <h4 class="card-title">Primary card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="container text-bg-dark">
+
+
+        <div class="row mb-2">
+            {% for tur in tur %}
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <h3 class="mb-0">{{ tur.name|truncatechars:50 }}</h3>
+                            <div class="mb-1 text-body-secondary">{{ tur.date }}</div>
+                            <p class="card-text mb-auto">{{ tur.full|safe|truncatechars:20 }}</p>
+                            <a href="{% url 'detail' tur.id %}"
+                               class="icon-link gap-1 icon-link-hover stretched-link"><br>
+
+                            </a>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                            <img src="{{ tur.img.url }}" class="bd-placeholder-img" width="200" height="250"
+                                 style="object-fit: cover">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    {% include 'app/include/footer.html' %}
+
+{% endblock %}

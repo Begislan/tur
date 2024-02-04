@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+{% block title %}{{ det.name}}{% endblock %}
+{% block content %}
+
+
+{% include "app/include/header.html" %}
+<br>
+<div class="container">
+    <div class="blog">
+        <div class="card">
+            <center>
+                <h1 class="title">{{ det.name}}</h1>
+                <a href="{{ det.img.url }}" target="_blank"><img src="{{ det.img.url }}"
+                    alt="" class="" width="80%"></a>
+            </center>
+            <br>
+
+            <div class="text">
+                <h4>
+                    {{ det.full|safe}}
+                </h4>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <center>
+{#        <button type="button" class="btn btn-primary">Primary</button>#}
+        <button type="button" class="btn btn-secondary">{{ det.klass }}</button>
+    </center>
+    <p>12.12.2000</p>
+</div>
+
+
+
+{% include 'app/include/footer.html' %}
+
+{% endblock %}

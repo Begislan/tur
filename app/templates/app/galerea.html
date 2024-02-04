@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% block title %}{{ gal.title}}{% endblock %}
+{% block content %}
+
+
+    {% include "app/include/header.html" %}
+
+
+    <div class="album py-5 bg-body-dark">
+        <div class="container">
+                {% for gal in gal %}
+
+                        <a href="{% url 'gal_d' gal.id %}">
+                            <div class="card shadow-sm" style="position: relative">
+                                <img style="object-fit: cover;" src="{{ gal.image.url }}"
+                                     class="bd-placeholder-img card-img-top" width="100%" height="225">
+                                <div class="card-body" style="position: absolute">
+                                    <p class="card-text display-3 fw-bold">{{ gal.title|truncatechars:20 }}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-body-secondary">{{ gal.date }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <br>
+                {% endfor %}
+        </div>
+    </div>
+
+
+    {% include "app/include/footer.html" %}
+
+{% endblock %}

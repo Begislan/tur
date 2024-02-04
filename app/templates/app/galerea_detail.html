@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% block title %}{{ gal_d.title }}{% endblock %}
+{% block content %}
+
+
+    {% include "app/include/header.html" %}
+    <br>
+    <div class="container">
+        <a href="{{ gal_d.image.url }}" target="_blank"><img src="{{ gal_d.image.url }}" alt="" width="100%"></a>
+        <center>
+            <p class="display-6">{{ gal_d.title }}</p>
+        </center>
+    </div>
+    {% include "app/include/footer.html" %}
+
+{% endblock %}
